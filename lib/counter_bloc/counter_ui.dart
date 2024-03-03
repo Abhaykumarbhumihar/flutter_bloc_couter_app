@@ -1,3 +1,6 @@
+import 'package:bloc_counter/counter_bloc/continerBloc/container_bloc.dart';
+import 'package:bloc_counter/counter_bloc/continerBloc/container_evennt.dart';
+import 'package:bloc_counter/counter_bloc/continerBloc/container_state.dart';
 import 'package:bloc_counter/counter_bloc/counter_bloc.dart';
 import 'package:bloc_counter/counter_bloc/counter_event.dart';
 import 'package:bloc_counter/counter_bloc/counter_state.dart';
@@ -26,7 +29,22 @@ class CounterPaageOne extends StatelessWidget {
                   ? Text(state.count.toString())
                   : SizedBox();
             }),
-          )
+          ),
+           BlocBuilder<ContainerBloc,ContainerState>(
+
+            builder: (context, state) {
+              return 
+              Visibility(
+                visible: state.isCounterVisible,
+                child: Container(
+              
+              width: 300,
+              height: 300,
+              color: Colors.amber,
+                       ));
+            },
+             
+           )
         ],
       ),
       floatingActionButton: Column(
@@ -66,7 +84,7 @@ class CounterPaageOne extends StatelessWidget {
                       .read<CounterBloc>()
                       .add(CounterToggleVisibilityEvent(false));
                 },
-                tooltip: 'Decrement',
+                tooltip: 'Hide Counter text',
                 child: Text("Hide Counter text"),
               ),
               FloatingActionButton(
@@ -77,11 +95,41 @@ class CounterPaageOne extends StatelessWidget {
 
                   //I need to show here counter text
                 },
-                tooltip: 'Increment',
+                tooltip: 'Show Counter text',
                 child: Text("Show Counter text"),
               )
             ],
           ),
+        SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              ElevatedButton(
+                onPressed: () {
+                  /// I need to hide here counter;
+                  context
+                      .read<ContainerBloc>()
+                      .add(ContainerHideEvent());
+                },
+                //tooltip: 'Hide Counter text',
+                child: Text("Hide Container "),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  context
+                      .read<ContainerBloc>()
+                      .add(ContainerShowEvent());
+
+                  //I need to show here counter text
+                },
+               // tooltip: 'Show Counter text',
+                child: Text("Show Container "),
+              )
+            ],
+          ),
+
         ],
       ),
     );

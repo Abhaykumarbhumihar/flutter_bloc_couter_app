@@ -3,13 +3,19 @@ import 'package:bloc_counter/counter_bloc/counter_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CounterBloc extends Bloc<CounterEvent,CounterState>{
-  CounterBloc():super(CounterState(count: 0)){
-    on<CounterIncrementEvent>((event, emit) => emit(CounterState(count: state.count+1)));
-        on<CounterDecrementEvent>((event, emit) => emit(CounterState(count: state.count-1)));
+  bool? isCounterVisible;
+  CounterBloc():super(CounterState(count: 0,isCounterVisible: true)){
+    isCounterVisible=true;
+    on<CounterIncrementEvent>((event, emit) => emit(CounterState(count: state.count+1,isCounterVisible: isCounterVisible!)));
+        on<CounterDecrementEvent>((event, emit) => emit(CounterState(count: state.count-1,isCounterVisible: isCounterVisible!)));
 
-on<CounterToggleVisibilityEvent>((event, emit) =>
+on<CounterToggleVisibilityEvent>((event, emit) {
+  isCounterVisible = event.isVisible;
         emit(CounterState(
-            count: state.count, isCounterVisible: event.isVisible)));
+            count: state.count, isCounterVisible: event.isVisible));
+            
+}
+            );
 
   }
 

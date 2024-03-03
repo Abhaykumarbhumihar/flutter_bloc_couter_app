@@ -3,6 +3,8 @@ import 'package:bloc_counter/counter_bloc/counter_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'counter_bloc/continerBloc/container_bloc.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -12,10 +14,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:BlocProvider<CounterBloc>(create: (context) => CounterBloc(),
-      child: CounterPaageOne(),),
-      );
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (contet) => CounterBloc()),
+          BlocProvider(create: (contet) => ContainerBloc()),
+        ],
+        child: CounterPaageOne(),
+      ),
+    );
   }
 }
