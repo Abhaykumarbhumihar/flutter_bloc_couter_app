@@ -1,0 +1,1 @@
+ G:\\Project\\bloc_toturial\\bloc_counter\\.dart_tool\\flutter_build\\6d0472bd2a9c6a1b33583a9f9e1fc4dc\\native_assets.yaml: 

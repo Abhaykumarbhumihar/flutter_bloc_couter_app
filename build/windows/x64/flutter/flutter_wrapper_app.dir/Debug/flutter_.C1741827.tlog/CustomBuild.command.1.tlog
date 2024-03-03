@@ -1,0 +1,10 @@
+^G:\PROJECT\BLOC_TOTURIAL\BLOC_COUNTER\WINDOWS\FLUTTER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SG:/Project/bloc_toturial/bloc_counter/windows -BG:/Project/bloc_toturial/bloc_counter/build/windows/x64 --check-stamp-file G:/Project/bloc_toturial/bloc_counter/build/windows/x64/flutter/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
