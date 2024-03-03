@@ -7,6 +7,10 @@ class CounterBloc extends Bloc<CounterEvent,CounterState>{
     on<CounterIncrementEvent>((event, emit) => emit(CounterState(count: state.count+1)));
         on<CounterDecrementEvent>((event, emit) => emit(CounterState(count: state.count-1)));
 
+on<CounterToggleVisibilityEvent>((event, emit) =>
+        emit(CounterState(
+            count: state.count, isCounterVisible: event.isVisible)));
+
   }
 
 

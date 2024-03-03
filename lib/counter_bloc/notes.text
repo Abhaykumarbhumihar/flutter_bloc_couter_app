@@ -6,4 +6,15 @@ buildWhen do paramete leta hai previcious and current state,
 buildWhen function by default true retrun krta hai.
 jb bhi state change hoga builder function ui ko update krne k liye execute krega,
 aur agr buildWhen true retrun krega to hi ui update krega agr buildWhen false retrun krega 
-to builder function nahi chaleg aur  UI update nahi hoga
+to builder function nahi chaleg aur  UI update nahi hoga.
+
+Center(
+            child: BlocBuilder<CounterBloc, CounterState>(
+                bloc: counterBloc,
+                buildWhen: (previcious, current) {
+                  return true;====isko apne condition k according true false return kraa skte hai.
+                },
+                builder: (context, state) {
+                  return Text(state.count.toString());
+                }),
+          )

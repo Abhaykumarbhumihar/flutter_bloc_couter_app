@@ -1,5 +1,6 @@
 class CounterState {
 
   int count;
-  CounterState({required  this.count});
+  bool isCounterVisible;
+  CounterState({required  this.count, this.isCounterVisible = true});
 }
