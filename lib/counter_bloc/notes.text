@@ -18,3 +18,24 @@ Center(
                   return Text(state.count.toString());
                 }),
           )
+
+          Bloclistiner
+ka use alertdialog , snackbar aur rotuing k liye use hota hai, 
+Bloclistiner ka listenWhen(previcious,currentstate){
+    retrun true
+}
+listenWhen jb true retrun krega to hi listner chalega agr false retrun krega to nahi chalega
+
+listner me 2 paramete dena hota hai 
+(context,state){
+
+}
+
+Bloclistiner se ui update nahi hota hai , agr ui update krna hai to Bloclistiner k child me BlocBuilder 
+use krna padega
+
+
+BlocConsumer 
+BlocBuilder aur Bloclistiner dono ka mixup hai, agr hame ui rebuild ke sath routing ya dialog snackbar
+ka bhi jarurat hai to ham BlocConsumer use kr skte hai,
+isse BlocBuilder aur Bloclistiner dono ko use krne ka jarurat nahi hai
